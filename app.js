@@ -286,10 +286,12 @@ function getImagePath(p, size) {
   const suffix = s === 'bust' ? '上半身' : '全身';
   return `assets/poses/${POSES[p].file}_${suffix}.png`;
 }
-function showToast(msg) {
-  toast.textContent = msg;
+let toastTimer = null;
+function showToast(msg, cta) {
+  toast.innerHTML = msg + (cta || '');
   toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 2000);
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
 }
 function setActive(container, sel, el) {
   container.querySelectorAll(sel).forEach(e => e.classList.remove('active'));
@@ -1047,14 +1049,15 @@ refRelDirGroup.addEventListener('click', e => {
   setActive(refRelDirGroup, '.toggle-btn', b); updateAll();
 });
 
+const ctaHtml = ' &mdash; このプロンプトで画像を生成するなら PostStudio へ <svg class="toast-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 copyBtn.addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(promptOutput.value);
-    showToast('コピーしました');
+    showToast('コピーしました', ctaHtml);
   } catch {
     promptOutput.select();
     document.execCommand('copy');
-    showToast('コピーしました');
+    showToast('コピーしました', ctaHtml);
   }
 });
 
