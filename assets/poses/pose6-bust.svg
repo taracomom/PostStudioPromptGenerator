@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300">
+  <!-- 手振り: Bust-up, right hand waving -->
+  <!-- Head -->
+  <circle cx="95" cy="72" r="32" fill="#adb5bd"/>
+  <!-- Neck -->
+  <rect x="83" y="102" width="24" height="14" rx="5" fill="#adb5bd"/>
+  <!-- Torso -->
+  <path d="M35 135 Q35 116 55 116 L145 116 Q165 116 165 135 L169 260 Q169 270 159 270 L41 270 Q31 270 31 260 Z" fill="#adb5bd"/>
+  <!-- Shoulders -->
+  <ellipse cx="33" cy="132" rx="16" ry="18" fill="#adb5bd"/>
+  <ellipse cx="167" cy="132" rx="16" ry="18" fill="#adb5bd"/>
+  <!-- Left arm at side -->
+  <path d="M33 140 Q18 158 16 185 Q14 205 20 226" fill="none" stroke="#adb5bd" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="20" cy="228" r="10" fill="#adb5bd"/>
+  <!-- Right arm raised waving -->
+  <path d="M167 132 Q178 118 182 96 Q184 80 180 62" fill="none" stroke="#adb5bd" stroke-width="18" stroke-linecap="round"/>
+  <!-- Waving hand -->
+  <ellipse cx="178" cy="54" rx="14" ry="16" fill="#adb5bd"/>
+  <!-- Fingers spread -->
+  <line x1="170" y1="44" x2="166" y2="34" stroke="#adb5bd" stroke-width="5" stroke-linecap="round"/>
+  <line x1="176" y1="40" x2="174" y2="28" stroke="#adb5bd" stroke-width="5" stroke-linecap="round"/>
+  <line x1="182" y1="40" x2="182" y2="28" stroke="#adb5bd" stroke-width="5" stroke-linecap="round"/>
+  <line x1="188" y1="42" x2="190" y2="32" stroke="#adb5bd" stroke-width="5" stroke-linecap="round"/>
+  <!-- Motion lines -->
+  <line x1="196" y1="44" x2="200" y2="40" stroke="#868e96" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <line x1="198" y1="54" x2="200" y2="54" stroke="#868e96" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <line x1="196" y1="64" x2="200" y2="68" stroke="#868e96" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+  <!-- Fade-out bottom -->
+  <rect x="31" y="258" width="138" height="22" rx="4" fill="#adb5bd" opacity="0.4"/>
+  <rect x="39" y="274" width="122" height="14" rx="4" fill="#adb5bd" opacity="0.15"/>
+</svg>

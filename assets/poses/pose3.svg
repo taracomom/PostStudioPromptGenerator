@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300">
+  <!-- PC作業: Full body sitting at desk with monitor and keyboard -->
+  <!-- Head -->
+  <circle cx="100" cy="52" r="28" fill="#adb5bd"/>
+  <!-- Neck -->
+  <rect x="90" y="78" width="20" height="12" rx="4" fill="#adb5bd"/>
+  <!-- Torso -->
+  <path d="M55 105 Q55 90 70 90 L130 90 Q145 90 145 105 L148 185 Q148 192 140 192 L60 192 Q52 192 52 185 Z" fill="#adb5bd"/>
+  <!-- Shoulders -->
+  <ellipse cx="54" cy="102" rx="14" ry="15" fill="#adb5bd"/>
+  <ellipse cx="146" cy="102" rx="14" ry="15" fill="#adb5bd"/>
+  <!-- Left arm on keyboard -->
+  <path d="M54 110 Q40 130 44 155 Q46 165 62 170" fill="none" stroke="#adb5bd" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="64" cy="172" r="9" fill="#adb5bd"/>
+  <!-- Right arm on keyboard -->
+  <path d="M146 110 Q160 130 156 155 Q154 165 138 170" fill="none" stroke="#adb5bd" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="136" cy="172" r="9" fill="#adb5bd"/>
+  <!-- Monitor -->
+  <rect x="60" y="128" width="80" height="44" rx="4" fill="#495057" opacity="0.4"/>
+  <rect x="64" y="132" width="72" height="36" rx="2" fill="#868e96" opacity="0.3"/>
+  <rect x="92" y="172" width="16" height="6" fill="#495057" opacity="0.35"/>
+  <!-- Keyboard -->
+  <rect x="56" y="164" width="88" height="10" rx="3" fill="#495057" opacity="0.5"/>
+  <!-- Desk surface -->
+  <rect x="20" y="178" width="160" height="8" rx="2" fill="#868e96" opacity="0.5"/>
+  <!-- Upper legs (sitting) -->
+  <path d="M70 190 L60 228" fill="none" stroke="#adb5bd" stroke-width="20" stroke-linecap="round"/>
+  <path d="M130 190 L140 228" fill="none" stroke="#adb5bd" stroke-width="20" stroke-linecap="round"/>
+  <!-- Chair seat -->
+  <rect x="48" y="228" width="104" height="6" rx="3" fill="#868e96" opacity="0.4"/>
+  <!-- Lower legs -->
+  <path d="M60 232 L56 264" fill="none" stroke="#adb5bd" stroke-width="14" stroke-linecap="round"/>
+  <path d="M140 232 L144 264" fill="none" stroke="#adb5bd" stroke-width="14" stroke-linecap="round"/>
+  <!-- Feet -->
+  <ellipse cx="52" cy="270" rx="14" ry="6" fill="#adb5bd"/>
+  <ellipse cx="148" cy="270" rx="14" ry="6" fill="#adb5bd"/>
+  <!-- Chair legs -->
+  <line x1="48" y1="234" x2="40" y2="280" stroke="#868e96" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <line x1="152" y1="234" x2="160" y2="280" stroke="#868e96" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+</svg>

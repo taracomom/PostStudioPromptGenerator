@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300">
+  <!-- 手振り: Full body standing, right hand waving -->
+  <!-- Head -->
+  <circle cx="95" cy="44" r="28" fill="#adb5bd"/>
+  <!-- Neck -->
+  <rect x="85" y="70" width="20" height="12" rx="4" fill="#adb5bd"/>
+  <!-- Torso -->
+  <path d="M53 96 Q53 82 67 82 L123 82 Q137 82 137 96 L140 175 Q140 182 132 182 L58 182 Q50 182 50 175 Z" fill="#adb5bd"/>
+  <!-- Shoulders -->
+  <ellipse cx="52" cy="94" rx="14" ry="15" fill="#adb5bd"/>
+  <ellipse cx="138" cy="94" rx="14" ry="15" fill="#adb5bd"/>
+  <!-- Left arm at side -->
+  <path d="M52 102 Q38 125 34 152 Q32 168 36 186" fill="none" stroke="#adb5bd" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="36" cy="189" r="9" fill="#adb5bd"/>
+  <!-- Right arm raised waving -->
+  <path d="M138 96 Q150 82 154 64 Q156 48 152 32" fill="none" stroke="#adb5bd" stroke-width="16" stroke-linecap="round"/>
+  <!-- Waving hand (open palm) -->
+  <ellipse cx="150" cy="24" rx="12" ry="14" fill="#adb5bd"/>
+  <!-- Fingers spread -->
+  <line x1="142" y1="16" x2="138" y2="6" stroke="#adb5bd" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="148" y1="12" x2="146" y2="1" stroke="#adb5bd" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="154" y1="12" x2="154" y2="1" stroke="#adb5bd" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="160" y1="14" x2="162" y2="4" stroke="#adb5bd" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Motion lines -->
+  <line x1="170" y1="16" x2="176" y2="12" stroke="#868e96" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <line x1="172" y1="26" x2="176" y2="26" stroke="#868e96" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <line x1="170" y1="36" x2="176" y2="40" stroke="#868e96" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+  <!-- Hips -->
+  <ellipse cx="95" cy="182" rx="38" ry="10" fill="#adb5bd"/>
+  <!-- Left leg -->
+  <path d="M73 188 L70 232" fill="none" stroke="#adb5bd" stroke-width="20" stroke-linecap="round"/>
+  <path d="M70 232 L68 264" fill="none" stroke="#adb5bd" stroke-width="16" stroke-linecap="round"/>
+  <!-- Right leg -->
+  <path d="M117 188 L120 232" fill="none" stroke="#adb5bd" stroke-width="20" stroke-linecap="round"/>
+  <path d="M120 232 L122 264" fill="none" stroke="#adb5bd" stroke-width="16" stroke-linecap="round"/>
+  <!-- Feet -->
+  <ellipse cx="64" cy="270" rx="16" ry="6" fill="#adb5bd"/>
+  <ellipse cx="126" cy="270" rx="16" ry="6" fill="#adb5bd"/>
+</svg>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PostStudio Prompt Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;700;900&family=Noto+Serif+JP:wght@300;400;700;900&family=JetBrains+Mono:wght@400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-logo">
+        <svg width="20" height="20" viewBox="0 0 128 128"><rect width="128" height="128" rx="24" fill="#008080"/><text x="64" y="88" font-family="system-ui, sans-serif" font-size="72" font-weight="700" fill="white" text-anchor="middle">P</text></svg>
+        <h1>PostStudio <span class="header-accent">Prompt Generator</span></h1>
+      </div>
+    </header>
+
+    <!-- Main 3-column layout -->
+    <div class="main-layout">
+      <!-- LEFT COLUMN -->
+      <aside class="left-panel">
+        <div class="panel-content">
+          <!-- Pose Selection -->
+          <div class="config-section">
+            <label class="section-label">ポーズ</label>
+            <div class="toggle-buttons" id="charSize">
+              <button class="toggle-btn active" data-value="bust">バストアップ</button>
+              <button class="toggle-btn" data-value="full">全身</button>
+            </div>
+            <div class="pose-grid" id="poseGrid">
+              <div class="pose-card" data-pose="1"><img src="assets/poses/筆記_上半身.png" alt="筆記"><span class="pose-name">筆記</span></div>
+              <div class="pose-card active" data-pose="2"><img src="assets/poses/正面_上半身.png" alt="正面"><span class="pose-name">正面</span></div>
+              <div class="pose-card" data-pose="3"><img src="assets/poses/PC作業_上半身.png" alt="PC作業"><span class="pose-name">PC作業</span></div>
+              <div class="pose-card" data-pose="4"><img src="assets/poses/指差し_上半身.png" alt="指差し"><span class="pose-name">指差し</span></div>
+              <div class="pose-card" data-pose="5"><img src="assets/poses/腕組み_上半身.png" alt="腕組み"><span class="pose-name">腕組み</span></div>
+              <div class="pose-card" data-pose="6"><img src="assets/poses/挨拶_上半身.png" alt="挨拶"><span class="pose-name">挨拶</span></div>
+              <div class="pose-card pose-custom" data-pose="custom"><span class="pose-name">その他</span></div>
+            </div>
+            <input type="text" id="poseAction" class="input-clean" placeholder="アクション内容を入力（例：マイクを持って話している）">
+          </div>
+          <!-- Layout -->
+          <div class="config-section">
+            <div class="layout-grid" id="layoutGrid">
+              <button class="layout-btn active" data-layout="char-left" title="右テキスト"><span class="layout-icon"><span class="li-char li-left"></span><span class="li-text li-right"><span></span><span></span></span></span><span class="layout-name">右テキスト</span></button>
+              <button class="layout-btn" data-layout="char-right" title="左テキスト"><span class="layout-icon"><span class="li-text li-left"><span></span><span></span></span><span class="li-char li-right"></span></span><span class="layout-name">左テキスト</span></button>
+              <button class="layout-btn" data-layout="text-top" title="上テキスト"><span class="layout-icon layout-icon-vert"><span class="li-text li-top"><span></span><span></span></span><span class="li-char li-bottom"></span></span><span class="layout-name">上テキスト</span></button>
+              <button class="layout-btn" data-layout="text-bottom" title="下テキスト"><span class="layout-icon layout-icon-vert"><span class="li-char li-top"></span><span class="li-text li-bottom"><span></span><span></span></span></span><span class="layout-name">下テキスト</span></button>
+              <button class="layout-btn" data-layout="text-only" title="全面テキスト"><span class="layout-icon layout-icon-center"><span class="li-text li-center"><span></span><span></span><span></span></span></span><span class="layout-name">全面</span></button>
+            </div>
+          </div>
+          <!-- Aspect Ratio -->
+          <div class="config-section">
+            <div class="aspect-ratio-grid" id="aspectRatioGrid">
+              <button type="button" class="aspect-btn" data-ratio="21:9"><span class="aspect-shape" style="--w:21;--h:9"></span><span class="aspect-label">21:9</span></button>
+              <button type="button" class="aspect-btn active" data-ratio="16:9"><span class="aspect-shape" style="--w:16;--h:9"></span><span class="aspect-label">16:9</span></button>
+              <button type="button" class="aspect-btn" data-ratio="3:2"><span class="aspect-shape" style="--w:3;--h:2"></span><span class="aspect-label">3:2</span></button>
+              <button type="button" class="aspect-btn" data-ratio="4:3"><span class="aspect-shape" style="--w:4;--h:3"></span><span class="aspect-label">4:3</span></button>
+              <button type="button" class="aspect-btn" data-ratio="1:1"><span class="aspect-shape" style="--w:1;--h:1"></span><span class="aspect-label">1:1</span></button>
+            </div>
+          </div>
+          <!-- Reference Image -->
+          <div class="config-section">
+            <label class="section-label">参照画像</label>
+            <div class="ref-toggle-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="refToggle">
+                <span class="toggle-slider"></span>
+              </label>
+              <span class="toggle-label">表示する</span>
+            </div>
+            <div id="refSettings">
+              <div class="form-group">
+                <label class="form-label">配置モード</label>
+                <div class="toggle-buttons" id="refMode">
+                  <button class="toggle-btn active" data-value="character">人物基準</button>
+                  <button class="toggle-btn" data-value="text">テキスト基準</button>
+                </div>
+              </div>
+              <div class="form-group" id="refTextTargetRow" style="display:none;">
+                <label class="form-label">基準テキスト</label>
+                <div class="toggle-buttons" id="refTextTarget">
+                  <button class="toggle-btn active" data-value="title">タイトル</button>
+                  <button class="toggle-btn" data-value="subtitle1">サブ1</button>
+                  <button class="toggle-btn" data-value="subtitle2">サブ2</button>
+                </div>
+              </div>
+              <div class="form-group" id="refRelDirRow">
+                <label class="form-label">方向</label>
+                <div class="toggle-buttons" id="refRelDir">
+                  <button class="toggle-btn" data-value="above">上</button>
+                  <button class="toggle-btn" data-value="below">下</button>
+                  <button class="toggle-btn" data-value="left">左</button>
+                  <button class="toggle-btn active" data-value="right">右</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CENTER COLUMN -->
+      <main class="center-panel">
+        <div class="panel-content">
+          <!-- Background (all inline) -->
+          <div class="config-section">
+            <div class="bg-header-row">
+              <label class="section-label">背景</label>
+              <div class="toggle-buttons compact" id="bgType">
+                <button class="toggle-btn active" data-value="solid">ベタ</button>
+                <button class="toggle-btn" data-value="gradient">グラデ</button>
+                <button class="toggle-btn" data-value="scene">シーン</button>
+              </div>
+              <div id="solidControls" class="bg-inline-group">
+                <div class="color-input-wrap"><input type="color" id="bgColorPicker" value="#ffffff"><input type="text" id="bgColorHex" class="input-clean input-hex" value="#ffffff" maxlength="7"></div>
+                <div class="preset-inline" id="colorPresetGrid">
+                  <button class="color-preset active" data-preset="p1" data-bg="#ffffff" data-fg="#000000" title="白×黒"><span class="preset-swatch" style="background:#ffffff;color:#000000;border:1px solid #dee2e6;">Aa</span></button>
+                  <button class="color-preset" data-preset="p2" data-bg="#000000" data-fg="#ffffff" title="黒×白"><span class="preset-swatch" style="background:#000000;color:#ffffff;">Aa</span></button>
+                  <button class="color-preset" data-preset="p3" data-bg="#dddddd" data-fg="#333333" title="薄灰×黒"><span class="preset-swatch" style="background:#dddddd;color:#333333;border:1px solid #dee2e6;">Aa</span></button>
+                  <button class="color-preset" data-preset="p4" data-bg="#1a1a1a" data-fg="#D4AF37" title="黒×金"><span class="preset-swatch" style="background:#1a1a1a;"><span style="background:linear-gradient(180deg,#F5E6A3,#D4AF37,#B8860B,#F5E6A3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;">Aa</span></span></button>
+                  <button class="color-preset" data-preset="p5" data-bg="#1B2845" data-fg="#C5A43C" title="紺×金"><span class="preset-swatch" style="background:#1B2845;"><span style="background:linear-gradient(180deg,#F0DC82,#C5A43C,#8B6914,#F0DC82);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;">Aa</span></span></button>
+                  <button class="color-preset" data-preset="p6" data-bg="#FFFFFF" data-fg="#FF0000" title="白×赤"><span class="preset-swatch" style="background:#FFFFFF;color:#FF0000;border:1px solid #dee2e6;">Aa</span></button>
+                  <button class="color-preset" data-preset="p7" data-bg="#FDD000" data-fg="#000000" title="黄×黒"><span class="preset-swatch" style="background:#FDD000;color:#000000;">Aa</span></button>
+                  <button class="color-preset" data-preset="p8" data-bg="#FFFFFF" data-fg="#00704A" title="白×深緑"><span class="preset-swatch" style="background:#FFFFFF;color:#00704A;border:1px solid #dee2e6;">Aa</span></button>
+                  <button class="color-preset" data-preset="p9" data-bg="#DA291C" data-fg="#FDD000" title="赤×黄"><span class="preset-swatch" style="background:#DA291C;color:#FDD000;">Aa</span></button>
+                  <button class="color-preset" data-preset="p10" data-bg="#06C755" data-fg="#FFFFFF" title="緑×白"><span class="preset-swatch" style="background:#06C755;color:#FFFFFF;">Aa</span></button>
+                  <button class="color-preset" data-preset="p11" data-bg="#0058A3" data-fg="#FFDB00" title="青×黄"><span class="preset-swatch" style="background:#0058A3;color:#FFDB00;">Aa</span></button>
+                  <button class="color-preset" data-preset="p12" data-bg="#0068B7" data-fg="#FFFFFF" title="青×白"><span class="preset-swatch" style="background:#0068B7;color:#FFFFFF;">Aa</span></button>
+                  <button class="color-preset" data-preset="p13" data-bg="#FFFFFF" data-fg="#0068B7" title="白×青"><span class="preset-swatch" style="background:#FFFFFF;color:#0068B7;border:1px solid #dee2e6;">Aa</span></button>
+                  <button class="color-preset" data-preset="p14" data-bg="#0ABAB5" data-fg="#FFFFFF" title="ミント×白"><span class="preset-swatch" style="background:#0ABAB5;color:#FFFFFF;">Aa</span></button>
+                  <button class="color-preset" data-preset="p15" data-bg="#F40009" data-fg="#FFFFFF" title="赤×白"><span class="preset-swatch" style="background:#F40009;color:#FFFFFF;">Aa</span></button>
+                  <button class="color-preset" data-preset="p16" data-bg="#000000" data-fg="#E50914" title="黒×赤"><span class="preset-swatch" style="background:#000000;color:#E50914;">Aa</span></button>
+                  <button class="color-preset" data-preset="p17" data-bg="#191414" data-fg="#1DB954" title="黒×緑"><span class="preset-swatch" style="background:#191414;color:#1DB954;">Aa</span></button>
+                  <button class="color-preset" data-preset="p18" data-bg="#A435F0" data-fg="#FFFFFF" title="紫×白"><span class="preset-swatch" style="background:#A435F0;color:#FFFFFF;">Aa</span></button>
+                </div>
+              </div>
+              <div id="gradControls" style="display:none;" class="bg-inline-group">
+                <div class="preset-inline" id="gradPresetGrid">
+                  <button class="gradient-preset" data-preset="instagram" title="Instagram"><span class="grad-swatch" style="background:linear-gradient(to bottom right,#833ab4,#fd1d1d,#fcb045);"></span></button>
+                  <button class="gradient-preset" data-preset="canva" title="Canva"><span class="grad-swatch" style="background:linear-gradient(to right,#00c4cc,#7d2ae8);"></span></button>
+                  <button class="gradient-preset" data-preset="sunset" title="サンセット"><span class="grad-swatch" style="background:linear-gradient(to right,#ff512f,#f09819,#ffd700);"></span></button>
+                  <button class="gradient-preset" data-preset="ocean" title="オーシャン"><span class="grad-swatch" style="background:linear-gradient(to right,#2193b0,#6dd5ed);"></span></button>
+                  <button class="gradient-preset" data-preset="midnight" title="ミッドナイト"><span class="grad-swatch" style="background:linear-gradient(to bottom right,#0f0c29,#302b63);"></span></button>
+                  <button class="gradient-preset" data-preset="emerald" title="エメラルド"><span class="grad-swatch" style="background:linear-gradient(to right,#11998e,#38ef7d);"></span></button>
+                  <button class="gradient-preset" data-preset="flame" title="フレイム"><span class="grad-swatch" style="background:linear-gradient(to right,#f12711,#f5af19,#ffd700);"></span></button>
+                  <button class="gradient-preset" data-preset="mono" title="モノクローム"><span class="grad-swatch" style="background:linear-gradient(to bottom,#232526,#414345);"></span></button>
+                  <button class="gradient-preset" data-preset="gold" title="ゴールド"><span class="grad-swatch" style="background:linear-gradient(to right,#A18838,#DDBD74,#BF9A54);"></span></button>
+                </div>
+                <span class="form-label-inline">色1</span>
+                <div class="color-input-wrap"><input type="color" id="gradC1Picker" value="#ffffff"><input type="text" id="gradC1Hex" class="input-clean input-hex" value="#ffffff" maxlength="7"></div>
+                <span class="form-label-inline">色2</span>
+                <div class="color-input-wrap"><input type="color" id="gradC2Picker" value="#0f3460"><input type="text" id="gradC2Hex" class="input-clean input-hex" value="#0f3460" maxlength="7"></div>
+                <label class="toggle-switch" style="margin-left:4px;"><input type="checkbox" id="gradColor3Toggle"><span class="toggle-slider"></span></label>
+                <span class="toggle-label">3色</span>
+                <div class="color-input-wrap" id="gradC3Row" style="display:none;"><span class="form-label-inline">色3</span><input type="color" id="gradC3Picker" value="#ffffff"><input type="text" id="gradC3Hex" class="input-clean input-hex" value="#ffffff" maxlength="7"></div>
+                <span class="form-label-inline">方向</span>
+                <div class="toggle-buttons compact" id="gradDir">
+                  <button class="toggle-btn active" data-value="to-bottom">↓</button>
+                  <button class="toggle-btn" data-value="to-right">→</button>
+                  <button class="toggle-btn" data-value="to-br">↘</button>
+                  <button class="toggle-btn" data-value="to-bl">↙</button>
+                </div>
+              </div>
+              <div id="sceneControls" style="display:none;" class="bg-inline-group">
+                <div class="toggle-buttons compact" id="sceneType">
+                  <button class="toggle-btn active" data-value="cafe">カフェ</button>
+                  <button class="toggle-btn" data-value="office-night">夜オフィス</button>
+                  <button class="toggle-btn" data-value="nature">自然</button>
+                  <button class="toggle-btn" data-value="bookshelf">書斎</button>
+                  <button class="toggle-btn" data-value="blue-sky">青空</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Preview -->
+          <div class="preview-wrapper">
+            <div class="preview-container layout-char-left" id="previewContainer" style="aspect-ratio: 16/9;">
+              <img class="preview-character" id="previewCharacter" src="assets/poses/正面_上半身.png" alt="Character">
+              <div class="preview-ref-wrap logo-top-right" id="previewRefWrap" style="display:none;">
+                <span class="ref-label">参照画像</span>
+                <img class="preview-ref-img" id="previewRef" src="assets/logo-placeholder.svg" alt="参照画像">
+              </div>
+              <div class="preview-band band-vertical band-left band-align-start" id="previewBand"><span class="preview-band-text" id="previewBandText">初心者でもプロ級の仕上がりに</span></div>
+              <div class="preview-text-area" id="previewTextArea">
+                <h2 class="preview-title" id="previewTitle">知らなきゃ損！
+サムネデザイン
+攻略法</h2>
+                <div class="preview-subs-group" id="previewSubsGroup">
+                  <p class="preview-subtitle" id="previewSub1">初心者でもプロ級の仕上がりに</p>
+                  <p class="preview-subtitle" id="previewSub2">今日から使えるテクニック集</p>
+                </div>
+              </div>
+            </div>
+            <p class="preview-disclaimer">※デザインはイメージです</p>
+          </div>
+
+          <!-- Prompt Output -->
+          <div class="config-section prompt-output-section">
+            <label class="section-label">出力プロンプト</label>
+            <div class="prompt-output-container">
+              <textarea class="prompt-output" id="promptOutput" rows="12"></textarea>
+              <button class="btn-copy" id="copyBtn">コピー</button>
+            </div>
+            <a class="cta-poststudio" href="https://taracomom.github.io/PostStudio/" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 128 128"><rect width="128" height="128" rx="24" fill="#008080"/><text x="64" y="88" font-family="system-ui, sans-serif" font-size="72" font-weight="700" fill="white" text-anchor="middle">P</text></svg>
+              <span>このプロンプトで画像を生成するなら <strong>PostStudio</strong> へ</span>
+              <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </main>
+
+      <!-- RIGHT COLUMN -->
+      <aside class="right-panel">
+        <div class="panel-content">
+          <!-- Text & Font Settings (unified) -->
+          <div class="config-section">
+            <div class="text-controls">
+              <span class="form-label-inline">サブの位置</span>
+              <div class="toggle-buttons compact sub-pos-icons" id="subtitlePosition">
+                <button class="toggle-btn" data-value="top" title="サブが上"><svg width="12" height="14" viewBox="0 0 12 14"><rect y="0" width="12" height="5" rx="1" fill="currentColor" opacity="0.45"/><rect y="7" width="12" height="7" rx="1" fill="currentColor"/></svg></button>
+                <button class="toggle-btn active" data-value="bottom" title="サブが下"><svg width="12" height="14" viewBox="0 0 12 14"><rect y="0" width="12" height="7" rx="1" fill="currentColor"/><rect y="9" width="12" height="5" rx="1" fill="currentColor" opacity="0.45"/></svg></button>
+                <button class="toggle-btn" data-value="left" title="サブが左"><svg width="14" height="12" viewBox="0 0 14 12"><rect x="0" width="5" height="12" rx="1" fill="currentColor" opacity="0.45"/><rect x="7" width="7" height="12" rx="1" fill="currentColor"/></svg></button>
+                <button class="toggle-btn" data-value="right" title="サブが右"><svg width="14" height="12" viewBox="0 0 14 12"><rect x="0" width="7" height="12" rx="1" fill="currentColor"/><rect x="9" width="5" height="12" rx="1" fill="currentColor" opacity="0.45"/></svg></button>
+              </div>
+            </div>
+            <!-- Title -->
+            <div class="text-field-group">
+              <label class="form-label">タイトル</label>
+              <textarea id="titleInput" class="input-clean" rows="3" placeholder="タイトルを入力（改行可）">知らなきゃ損！
+サムネデザイン
+攻略法</textarea>
+              <div class="text-controls">
+                <div class="align-buttons" id="titleAlign">
+                  <button class="align-btn active" data-align="left"><svg width="16" height="12" viewBox="0 0 16 12"><rect width="14" height="2.5" rx="1" fill="currentColor"/><rect y="4.5" width="9" height="2.5" rx="1" fill="currentColor"/><rect y="9" width="12" height="2.5" rx="1" fill="currentColor"/></svg></button>
+                  <button class="align-btn" data-align="center"><svg width="16" height="12" viewBox="0 0 16 12"><rect x="1" width="14" height="2.5" rx="1" fill="currentColor"/><rect x="3.5" y="4.5" width="9" height="2.5" rx="1" fill="currentColor"/><rect x="2" y="9" width="12" height="2.5" rx="1" fill="currentColor"/></svg></button>
+                  <button class="align-btn" data-align="right"><svg width="16" height="12" viewBox="0 0 16 12"><rect x="2" width="14" height="2.5" rx="1" fill="currentColor"/><rect x="7" y="4.5" width="9" height="2.5" rx="1" fill="currentColor"/><rect x="4" y="9" width="12" height="2.5" rx="1" fill="currentColor"/></svg></button>
+                </div>
+                <div class="toggle-buttons compact" id="titleFontFamily">
+                  <button class="toggle-btn active" data-value="gothic">ゴシック</button>
+                  <button class="toggle-btn" data-value="mincho">明朝</button>
+                </div>
+                <div class="color-input-wrap">
+                  <input type="color" id="titleColorPicker" value="#000000">
+                  <input type="text" id="titleColorHex" class="input-clean input-hex" value="#000000" maxlength="7">
+                </div>
+                <button class="stroke-btn gold-btn" id="titleGold" title="ゴールド">金</button>
+              </div>
+              <div class="text-controls">
+                <div class="toggle-buttons compact fw-demo" id="titleFontWeight">
+                  <button class="toggle-btn" data-value="300">細</button>
+                  <button class="toggle-btn" data-value="400">標準</button>
+                  <button class="toggle-btn" data-value="700">太</button>
+                  <button class="toggle-btn active" data-value="900">極太</button>
+                </div>
+                <div class="toggle-buttons compact fs-demo" id="titleSize">
+                  <button class="toggle-btn" data-value="S">小</button>
+                  <button class="toggle-btn" data-value="M">中</button>
+                  <button class="toggle-btn active" data-value="L">大</button>
+                  <button class="toggle-btn" data-value="XL">特大</button>
+                </div>
+                <span class="size-info" id="titleSizeInfo">64px</span>
+                <div class="toggle-buttons compact dir-icons" id="titleDir">
+                  <button class="toggle-btn active" data-value="horizontal" title="横書き"><svg width="14" height="11" viewBox="0 0 14 11"><rect width="14" height="2" rx="1" fill="currentColor"/><rect y="4.5" width="10" height="2" rx="1" fill="currentColor"/><rect y="9" width="12" height="2" rx="1" fill="currentColor"/></svg></button>
+                  <button class="toggle-btn" data-value="vertical" title="縦書き"><svg width="11" height="14" viewBox="0 0 11 14"><rect width="2" height="14" rx="1" fill="currentColor"/><rect x="4.5" width="2" height="10" rx="1" fill="currentColor"/><rect x="9" width="2" height="12" rx="1" fill="currentColor"/></svg></button>
+                </div>
+                <button class="stroke-btn stroke-off" id="titleStroke" title="縁取り">縁なし</button>
+                <input type="color" id="titleStrokeColor" class="stroke-color-picker stroke-inactive" value="#000000">
+                <input type="range" id="titleStrokeWidth" class="stroke-width-slider" min="0.5" max="8" step="0.5" value="1" style="display:none;">
+                <span class="stroke-width-label" id="titleStrokeWidthLabel" style="display:none;">1px</span>
+              </div>
+            </div>
+            <!-- Subtitle 1 -->
+            <div class="text-field-group">
+              <label class="form-label">サブタイトル1</label>
+              <textarea id="sub1Input" class="input-clean" rows="2" placeholder="サブタイトル1を入力（改行可）">初心者でもプロ級の仕上がりに</textarea>
+              <div class="text-controls">
+                <div class="align-buttons" id="sub1Align">
+                  <button class="align-btn active" data-align="left"><svg width="16" height="12" viewBox="0 0 16 12"><rect width="14" height="2.5" rx="1" fill="currentColor"/><rect y="4.5" width="9" height="2.5" rx="1" fill="currentColor"/><rect y="9" width="12" height="2.5" rx="1" fill="currentColor"/></svg></button>
+                  <button class="align-btn" data-align="center"><svg width="16" height="12" viewBox="0 0 16 12"><rect x="1" width="14" height="2.5" rx="1" fill="currentColor"/><rect x="3.5" y="4.5" width="9" height="2.5" rx="1" fill="currentColor"/><rect x="2" y="9" width="12" height="2.5" rx="1" fill="currentColor"/></svg></button>
+                  <button class="align-btn" data-align="right"><svg width="16" height="12" viewBox="0 0 16 12"><rect x="2" width="14" height="2.5" rx="1" fill="currentColor"/><rect x="7" y="4.5" width="9" height="2.5" rx="1" fill="currentColor"/><rect x="4" y="9" width="12" height="2.5" rx="1" fill="currentColor"/></svg></button>
+                </div>
+                <div class="toggle-buttons compact" id="sub1FontFamily">
+                  <button class="toggle-btn active" data-value="gothic">ゴシック</button>
+                  <button class="toggle-btn" data-value="mincho">明朝</button>
+                </div>
+                <div class="color-input-wrap">
+                  <input type="color" id="sub1ColorPicker" value="#000000">
+                  <input type="text" id="sub1ColorHex" class="input-clean input-hex" value="#000000" maxlength="7">
+                </div>
+                <button class="stroke-btn gold-btn" id="sub1Gold" title="ゴールド">金</button>
+              </div>
+              <div class="text-controls">
+                <div class="toggle-buttons compact fw-demo" id="sub1FontWeight">
+                  <button class="toggle-btn" data-value="300">細</button>
+                  <button class="toggle-btn" data-value="400">標準</button>
+                  <button class="toggle-btn active" data-value="700">太</button>
+                  <button class="toggle-btn" data-value="900">極太</button>
+                </div>
+                <div class="toggle-buttons compact fs-demo" id="sub1Size">
+                  <button class="toggle-btn" data-value="S">小</button>
+                  <button class="toggle-btn" data-value="M">中</button>
+                  <button class="toggle-btn active" data-value="L">大</button>
+                  <button class="toggle-btn" data-value="XL">特大</button>
+                </div>
+                <span class="size-info" id="sub1SizeInfo">32px</span>
+                <div class="toggle-buttons compact dir-icons" id="sub1Dir">
+                  <button class="toggle-btn" data-value="horizontal" title="横書き"><svg width="14" height="11" viewBox="0 0 14 11"><rect width="14" height="2" rx="1" fill="currentColor"/><rect y="4.5" width="10" height="2" rx="1" fill="currentColor"/><rect y="9" width="12" height="2" rx="1" fill="currentColor"/></svg></button>
+                  <button class="toggle-btn active" data-value="vertical" title="縦書き"><svg width="11" height="14" viewBox="0 0 11 14"><rect width="2" height="14" rx="1" fill="currentColor"/><rect x="4.5" width="2" height="10" rx="1" fill="currentColor"/><rect x="9" width="2" height="12" rx="1" fill="currentColor"/></svg></button>
+                </div>
+                <button class="stroke-btn stroke-off" id="sub1Stroke" title="縁取り">縁なし</button>
+                <input type="color" id="sub1StrokeColor" class="stroke-color-picker stroke-inactive" value="#000000">
+                <input type="range" id="sub1StrokeWidth" class="stroke-width-slider" min="0.5" max="3" step="0.5" value="0.5" style="display:none;">
+                <span class="stroke-width-label" id="sub1StrokeWidthLabel" style="display:none;">0.5px</span>
+              </div>
+              <!-- Band -->
+              <div class="text-controls">
+                <div class="toggle-buttons compact" id="bandMode">
+                  <button class="toggle-btn" data-value="none">帯なし</button>
+                  <button class="toggle-btn" data-value="horizontal">横帯</button>
+                  <button class="toggle-btn active" data-value="vertical">縦帯</button>
+                </div>
+                <div id="bandSettings">
+                  <div class="toggle-buttons compact" id="bandPos"></div>
+                  <span class="form-label-inline">帯色</span>
+                  <div class="color-input-wrap">
+                    <input type="color" id="bandColorPicker" value="#000000">
+                    <input type="text" id="bandColorHex" class="input-clean input-hex" value="#000000" maxlength="7">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Subtitle 2 -->
+            <div class="text-field-group">
+              <label class="form-label">サブタイトル2</label>
+              <textarea id="sub2Input" class="input-clean" rows="2" placeholder="サブタイトル2を入力（任意・改行可）">今日から使えるテクニック集</textarea>
+              <div class="text-controls">
+                <div class="align-buttons" id="sub2Align">
+                  <button class="align-btn active" data-align="left"><svg width="16" height="12" viewBox="0 0 16 12"><rect width="14" height="2.5" rx="1" fill="currentColor"/><rect y="4.5" width="9" height="2.5" rx="1" fill="currentColor"/><rect y="9" width="12" height="2.5" rx="1" fill="currentColor"/></svg></button>
+                  <button class="align-btn" data-align="center"><svg width="16" height="12" viewBox="0 0 16 12"><rect x="1" width="14" height="2.5" rx="1" fill="currentColor"/><rect x="3.5" y="4.5" width="9" height="2.5" rx="1" fill="currentColor"/><rect x="2" y="9" width="12" height="2.5" rx="1" fill="currentColor"/></svg></button>
+                  <button class="align-btn" data-align="right"><svg width="16" height="12" viewBox="0 0 16 12"><rect x="2" width="14" height="2.5" rx="1" fill="currentColor"/><rect x="7" y="4.5" width="9" height="2.5" rx="1" fill="currentColor"/><rect x="4" y="9" width="12" height="2.5" rx="1" fill="currentColor"/></svg></button>
+                </div>
+                <div class="toggle-buttons compact" id="sub2FontFamily">
+                  <button class="toggle-btn active" data-value="gothic">ゴシック</button>
+                  <button class="toggle-btn" data-value="mincho">明朝</button>
+                </div>
+                <div class="color-input-wrap">
+                  <input type="color" id="sub2ColorPicker" value="#000000">
+                  <input type="text" id="sub2ColorHex" class="input-clean input-hex" value="#000000" maxlength="7">
+                </div>
+                <button class="stroke-btn gold-btn" id="sub2Gold" title="ゴールド">金</button>
+              </div>
+              <div class="text-controls">
+                <div class="toggle-buttons compact fw-demo" id="sub2FontWeight">
+                  <button class="toggle-btn" data-value="300">細</button>
+                  <button class="toggle-btn active" data-value="400">標準</button>
+                  <button class="toggle-btn" data-value="700">太</button>
+                  <button class="toggle-btn" data-value="900">極太</button>
+                </div>
+                <div class="toggle-buttons compact fs-demo" id="sub2Size">
+                  <button class="toggle-btn" data-value="S">小</button>
+                  <button class="toggle-btn" data-value="M">中</button>
+                  <button class="toggle-btn active" data-value="L">大</button>
+                  <button class="toggle-btn" data-value="XL">特大</button>
+                </div>
+                <span class="size-info" id="sub2SizeInfo">32px</span>
+                <div class="toggle-buttons compact dir-icons" id="sub2Dir">
+                  <button class="toggle-btn active" data-value="horizontal" title="横書き"><svg width="14" height="11" viewBox="0 0 14 11"><rect width="14" height="2" rx="1" fill="currentColor"/><rect y="4.5" width="10" height="2" rx="1" fill="currentColor"/><rect y="9" width="12" height="2" rx="1" fill="currentColor"/></svg></button>
+                  <button class="toggle-btn" data-value="vertical" title="縦書き"><svg width="11" height="14" viewBox="0 0 11 14"><rect width="2" height="14" rx="1" fill="currentColor"/><rect x="4.5" width="2" height="10" rx="1" fill="currentColor"/><rect x="9" width="2" height="12" rx="1" fill="currentColor"/></svg></button>
+                </div>
+                <button class="stroke-btn stroke-off" id="sub2Stroke" title="縁取り">縁なし</button>
+                <input type="color" id="sub2StrokeColor" class="stroke-color-picker stroke-inactive" value="#000000">
+                <input type="range" id="sub2StrokeWidth" class="stroke-width-slider" min="0.5" max="3" step="0.5" value="0.5" style="display:none;">
+                <span class="stroke-width-label" id="sub2StrokeWidthLabel" style="display:none;">0.5px</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300">
+  <!-- 上半身: Bust-up, neutral arms at sides -->
+  <!-- Head -->
+  <circle cx="100" cy="72" r="32" fill="#adb5bd"/>
+  <!-- Neck -->
+  <rect x="88" y="102" width="24" height="14" rx="5" fill="#adb5bd"/>
+  <!-- Torso -->
+  <path d="M40 135 Q40 116 60 116 L140 116 Q160 116 160 135 L164 260 Q164 270 154 270 L46 270 Q36 270 36 260 Z" fill="#adb5bd"/>
+  <!-- Shoulders -->
+  <ellipse cx="38" cy="132" rx="16" ry="18" fill="#adb5bd"/>
+  <ellipse cx="162" cy="132" rx="16" ry="18" fill="#adb5bd"/>
+  <!-- Left arm -->
+  <path d="M38 140 Q22 158 20 185 Q18 205 24 226" fill="none" stroke="#adb5bd" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="24" cy="228" r="10" fill="#adb5bd"/>
+  <!-- Right arm -->
+  <path d="M162 140 Q178 158 180 185 Q182 205 176 226" fill="none" stroke="#adb5bd" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="176" cy="228" r="10" fill="#adb5bd"/>
+  <!-- Fade-out bottom -->
+  <rect x="36" y="258" width="128" height="22" rx="4" fill="#adb5bd" opacity="0.4"/>
+  <rect x="44" y="274" width="112" height="14" rx="4" fill="#adb5bd" opacity="0.15"/>
+</svg>

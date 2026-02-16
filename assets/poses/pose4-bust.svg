@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300">
+  <!-- 指差し: Bust-up, right hand pointing up -->
+  <!-- Head -->
+  <circle cx="90" cy="72" r="32" fill="#adb5bd"/>
+  <!-- Neck -->
+  <rect x="78" y="102" width="24" height="14" rx="5" fill="#adb5bd"/>
+  <!-- Torso -->
+  <path d="M30 135 Q30 116 50 116 L140 116 Q160 116 160 135 L164 260 Q164 270 154 270 L36 270 Q26 270 26 260 Z" fill="#adb5bd"/>
+  <!-- Shoulders -->
+  <ellipse cx="28" cy="132" rx="16" ry="18" fill="#adb5bd"/>
+  <ellipse cx="162" cy="132" rx="16" ry="18" fill="#adb5bd"/>
+  <!-- Left arm down -->
+  <path d="M28 140 Q14 158 12 185 Q10 205 16 226" fill="none" stroke="#adb5bd" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="16" cy="228" r="10" fill="#adb5bd"/>
+  <!-- Right arm pointing up -->
+  <path d="M162 132 Q170 120 176 100 Q180 86 186 72" fill="none" stroke="#adb5bd" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="186" cy="70" r="10" fill="#adb5bd"/>
+  <!-- Pointing finger -->
+  <path d="M190 64 L196 50" fill="none" stroke="#adb5bd" stroke-width="6" stroke-linecap="round"/>
+  <!-- Fade-out bottom -->
+  <rect x="26" y="258" width="138" height="22" rx="4" fill="#adb5bd" opacity="0.4"/>
+  <rect x="34" y="274" width="122" height="14" rx="4" fill="#adb5bd" opacity="0.15"/>
+</svg>

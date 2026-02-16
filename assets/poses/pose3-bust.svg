@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300">
+  <!-- PC作業: Bust-up, at monitor with keyboard -->
+  <!-- Head -->
+  <circle cx="100" cy="72" r="32" fill="#adb5bd"/>
+  <!-- Neck -->
+  <rect x="88" y="102" width="24" height="14" rx="5" fill="#adb5bd"/>
+  <!-- Torso -->
+  <path d="M40 135 Q40 116 60 116 L140 116 Q160 116 160 135 L164 260 Q164 270 154 270 L46 270 Q36 270 36 260 Z" fill="#adb5bd"/>
+  <!-- Shoulders -->
+  <ellipse cx="38" cy="132" rx="16" ry="18" fill="#adb5bd"/>
+  <ellipse cx="162" cy="132" rx="16" ry="18" fill="#adb5bd"/>
+  <!-- Left arm on keyboard -->
+  <path d="M38 140 Q30 160 40 185 Q46 196 62 200" fill="none" stroke="#adb5bd" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="64" cy="200" r="9" fill="#adb5bd"/>
+  <!-- Right arm on keyboard -->
+  <path d="M162 140 Q170 160 160 185 Q154 196 138 200" fill="none" stroke="#adb5bd" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="136" cy="200" r="9" fill="#adb5bd"/>
+  <!-- Monitor -->
+  <rect x="56" y="140" width="88" height="56" rx="4" fill="#495057" opacity="0.35"/>
+  <rect x="60" y="144" width="80" height="44" rx="2" fill="#6c757d" opacity="0.25"/>
+  <rect x="92" y="196" width="16" height="8" rx="2" fill="#495057" opacity="0.35"/>
+  <!-- Keyboard -->
+  <rect x="48" y="204" width="104" height="14" rx="3" fill="#868e96" opacity="0.5"/>
+  <!-- Fade-out bottom -->
+  <rect x="36" y="258" width="128" height="22" rx="4" fill="#adb5bd" opacity="0.4"/>
+  <rect x="44" y="274" width="112" height="14" rx="4" fill="#adb5bd" opacity="0.15"/>
+</svg>

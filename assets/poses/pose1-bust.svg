@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300">
+  <!-- ノート執筆: Bust-up, writing with pen on notebook -->
+  <!-- Head -->
+  <circle cx="100" cy="72" r="32" fill="#adb5bd"/>
+  <!-- Neck -->
+  <rect x="88" y="102" width="24" height="14" rx="5" fill="#adb5bd"/>
+  <!-- Torso -->
+  <path d="M40 135 Q40 116 60 116 L140 116 Q160 116 160 135 L164 260 Q164 270 154 270 L46 270 Q36 270 36 260 Z" fill="#adb5bd"/>
+  <!-- Shoulders -->
+  <ellipse cx="38" cy="132" rx="16" ry="18" fill="#adb5bd"/>
+  <ellipse cx="162" cy="132" rx="16" ry="18" fill="#adb5bd"/>
+  <!-- Left arm holding notebook -->
+  <path d="M38 140 Q28 162 36 188 Q40 198 58 204" fill="none" stroke="#adb5bd" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="60" cy="204" r="9" fill="#adb5bd"/>
+  <!-- Right arm writing -->
+  <path d="M162 140 Q168 158 152 180 Q142 194 126 200" fill="none" stroke="#adb5bd" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="124" cy="200" r="9" fill="#adb5bd"/>
+  <!-- Notebook -->
+  <rect x="44" y="196" width="80" height="50" rx="4" fill="#868e96" opacity="0.5"/>
+  <line x1="52" y1="210" x2="116" y2="210" stroke="#6c757d" stroke-width="1" opacity="0.4"/>
+  <line x1="52" y1="220" x2="116" y2="220" stroke="#6c757d" stroke-width="1" opacity="0.4"/>
+  <line x1="52" y1="230" x2="100" y2="230" stroke="#6c757d" stroke-width="1" opacity="0.4"/>
+  <!-- Pen -->
+  <line x1="124" y1="198" x2="108" y2="234" stroke="#495057" stroke-width="4" stroke-linecap="round"/>
+  <!-- Fade-out bottom -->
+  <rect x="36" y="258" width="128" height="22" rx="4" fill="#adb5bd" opacity="0.4"/>
+  <rect x="44" y="274" width="112" height="14" rx="4" fill="#adb5bd" opacity="0.15"/>
+</svg>

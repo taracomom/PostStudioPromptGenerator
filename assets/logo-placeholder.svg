@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <rect width="120" height="120" rx="16" fill="#008080"/>
+  <text x="60" y="52" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">参照</text>
+  <text x="60" y="78" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">画像</text>
+  <rect x="20" y="90" width="80" height="2" rx="1" fill="#ffffff" opacity="0.4"/>
+  <text x="60" y="108" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#ffffff" opacity="0.7" text-anchor="middle">Reference Image</text>
+</svg>

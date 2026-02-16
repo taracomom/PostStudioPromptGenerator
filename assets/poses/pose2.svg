@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300">
+  <!-- 上半身: Full body standing, neutral arms at sides -->
+  <!-- Head -->
+  <circle cx="100" cy="44" r="28" fill="#adb5bd"/>
+  <!-- Neck -->
+  <rect x="90" y="70" width="20" height="12" rx="4" fill="#adb5bd"/>
+  <!-- Torso -->
+  <path d="M58 96 Q58 82 72 82 L128 82 Q142 82 142 96 L145 175 Q145 182 137 182 L63 182 Q55 182 55 175 Z" fill="#adb5bd"/>
+  <!-- Shoulders -->
+  <ellipse cx="57" cy="94" rx="14" ry="15" fill="#adb5bd"/>
+  <ellipse cx="143" cy="94" rx="14" ry="15" fill="#adb5bd"/>
+  <!-- Left arm at side -->
+  <path d="M57 102 Q42 125 38 152 Q36 168 40 186" fill="none" stroke="#adb5bd" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="40" cy="189" r="9" fill="#adb5bd"/>
+  <!-- Right arm at side -->
+  <path d="M143 102 Q158 125 162 152 Q164 168 160 186" fill="none" stroke="#adb5bd" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="160" cy="189" r="9" fill="#adb5bd"/>
+  <!-- Hips -->
+  <ellipse cx="100" cy="182" rx="38" ry="10" fill="#adb5bd"/>
+  <!-- Left leg -->
+  <path d="M78 188 L74 232" fill="none" stroke="#adb5bd" stroke-width="20" stroke-linecap="round"/>
+  <path d="M74 232 L72 264" fill="none" stroke="#adb5bd" stroke-width="16" stroke-linecap="round"/>
+  <!-- Right leg -->
+  <path d="M122 188 L126 232" fill="none" stroke="#adb5bd" stroke-width="20" stroke-linecap="round"/>
+  <path d="M126 232 L128 264" fill="none" stroke="#adb5bd" stroke-width="16" stroke-linecap="round"/>
+  <!-- Feet -->
+  <ellipse cx="68" cy="270" rx="16" ry="6" fill="#adb5bd"/>
+  <ellipse cx="132" cy="270" rx="16" ry="6" fill="#adb5bd"/>
+</svg>
