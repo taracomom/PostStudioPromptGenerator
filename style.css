@@ -682,11 +682,10 @@ body {
 }
 
 .preview-disclaimer {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--text-tertiary);
   text-align: center;
   letter-spacing: 0.04em;
-  font-family: 'JetBrains Mono', monospace;
 }
 
 .preview-container {

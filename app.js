@@ -329,6 +329,20 @@ function contrastStrokeColor(hex) {
   const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
   return (0.299 * r + 0.587 * g + 0.114 * b) / 255 > 0.5 ? '#000000' : '#ffffff';
 }
+function syncStrokeColors() {
+  if (state.titleStroke) {
+    state.titleStrokeColor = contrastStrokeColor(state.titleColor);
+    titleStrokeColorPicker.value = state.titleStrokeColor;
+  }
+  if (state.subtitle1Stroke) {
+    state.subtitle1StrokeColor = contrastStrokeColor(state.subtitle1Color);
+    sub1StrokeColorPicker.value = state.subtitle1StrokeColor;
+  }
+  if (state.subtitle2Stroke) {
+    state.subtitle2StrokeColor = contrastStrokeColor(state.subtitle2Color);
+    sub2StrokeColorPicker.value = state.subtitle2StrokeColor;
+  }
+}
 
 // --- Dynamic UI Builders ---
 function buildBandPosUI() {
@@ -976,7 +990,7 @@ bandPosGroup.addEventListener('click', e => {
 
 // Colors
 function handleColor(field, val, syncFn) {
-  if (/^#[0-9a-fA-F]{6}$/.test(val)) { state[field] = val; syncFn?.(); syncColors(); updateAll(); }
+  if (/^#[0-9a-fA-F]{6}$/.test(val)) { state[field] = val; syncFn?.(); syncStrokeColors(); syncColors(); updateAll(); }
 }
 function clearPreset() {
   state.activePreset = null;
@@ -1014,7 +1028,7 @@ colorPresetGrid.addEventListener('click', e => {
   setActive(colorPresetGrid, '.color-preset', b);
   gradPresetGrid.querySelectorAll('.gradient-preset').forEach(e => e.classList.remove('active'));
   state.activeGradPreset = null;
-  syncColors(); updateAll();
+  syncStrokeColors(); syncColors(); updateAll();
 });
 gradPresetGrid.addEventListener('click', e => {
   const b = e.target.closest('.gradient-preset'); if (!b) return;
@@ -1040,7 +1054,7 @@ gradPresetGrid.addEventListener('click', e => {
   gradDirGroup.querySelectorAll('.toggle-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.value === p.dir);
   });
-  syncColors(); updateAll();
+  syncStrokeColors(); syncColors(); updateAll();
 });
 
 bgColorPicker.addEventListener('input', e => handleColor('bgColor', e.target.value, clearPreset));
