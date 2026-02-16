@@ -21,10 +21,13 @@
         <svg width="20" height="20" viewBox="0 0 128 128"><rect width="128" height="128" rx="24" fill="#008080"/><text x="64" y="88" font-family="system-ui, sans-serif" font-size="72" font-weight="700" fill="white" text-anchor="middle">P</text></svg>
         <h1>PostStudio <span class="header-accent">Prompt Generator</span></h1>
       </div>
-      <a class="cta-poststudio" href="https://taracomom.github.io/PostStudio/" target="_blank">
-        <span>このプロンプトで画像を生成するなら <strong>PostStudio</strong> へ</span>
-        <svg class="cta-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+      <div class="header-right">
+        <button class="btn-usage" id="usageBtn">使い方</button>
+        <a class="cta-poststudio" href="https://taracomom.github.io/PostStudio/" target="_blank">
+          <span>このプロンプトで画像を生成するなら <strong>PostStudio</strong> へ</span>
+          <svg class="cta-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </header>
 
     <!-- Main 3-column layout -->
@@ -385,6 +388,32 @@
 
         </div>
       </aside>
+    </div>
+  </div>
+
+  <!-- Usage Modal -->
+  <div class="modal-overlay" id="usageModal">
+    <div class="modal-content">
+      <button class="modal-close" id="usageClose">&times;</button>
+      <h2 class="modal-title">使い方</h2>
+      <ol class="modal-steps">
+        <li><strong>設定する</strong> — 左パネルでポーズ・レイアウト・比率を、右パネルでテキスト・フォント・色を調整</li>
+        <li><strong>プレビュー確認</strong> — 中央のプレビューでデザインイメージを確認</li>
+        <li><strong>プロンプトをコピー</strong> — 「コピー」ボタンでプロンプトをクリップボードにコピー</li>
+        <li><strong>画像生成ツールに貼り付け</strong> — <strong>Nano Banana Pro</strong> などの画像生成ツールにプロンプトを貼り付け</li>
+        <li><strong>人物画像を添付</strong> — ポーズで選んだ人物の参照画像も一緒に添付してください</li>
+      </ol>
+      <div class="modal-cta">
+        <p class="modal-cta-label">もっと簡単に使うなら</p>
+        <a class="modal-cta-btn" href="https://taracomom.github.io/PostStudio/" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 128 128"><rect width="128" height="128" rx="24" fill="#008080"/><text x="64" y="88" font-family="system-ui, sans-serif" font-size="72" font-weight="700" fill="white" text-anchor="middle">P</text></svg>
+          <div>
+            <strong>PostStudio</strong> を使えば、プロンプト不要！<br>
+            <span>設定画面から直接サムネイルを生成できます</span>
+          </div>
+          <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 

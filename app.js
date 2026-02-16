@@ -1118,6 +1118,14 @@ copyBtn.addEventListener('click', async () => {
   }
 });
 
+// --- Usage modal ---
+const usageModal = $('usageModal');
+const usageBtn = $('usageBtn');
+const usageClose = $('usageClose');
+usageBtn.addEventListener('click', () => usageModal.classList.add('show'));
+usageClose.addEventListener('click', () => usageModal.classList.remove('show'));
+usageModal.addEventListener('click', e => { if (e.target === usageModal) usageModal.classList.remove('show'); });
+
 // --- Init ---
 gradColor3Toggle.checked = state.useGradColor3;
 buildBandPosUI();
