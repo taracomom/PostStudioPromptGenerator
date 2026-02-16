@@ -44,14 +44,14 @@ const state = {
   refTextTarget: 'title',
   refRelDir: 'right',
   titleStroke: false,
-  titleStrokeColor: '#000000',
-  titleStrokeWidth: 1,
+  titleStrokeColor: '#ffffff',
+  titleStrokeWidth: 2,
   subtitle1Stroke: false,
-  subtitle1StrokeColor: '#000000',
-  subtitle1StrokeWidth: 0.5,
+  subtitle1StrokeColor: '#ffffff',
+  subtitle1StrokeWidth: 1.5,
   subtitle2Stroke: false,
-  subtitle2StrokeColor: '#000000',
-  subtitle2StrokeWidth: 0.5,
+  subtitle2StrokeColor: '#ffffff',
+  subtitle2StrokeWidth: 1.5,
   bgScene: 'cafe',
   textGradient: null,
   titleGold: false,
@@ -324,6 +324,10 @@ function contrastShadow(hex) {
   const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
   const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
   return lum > 0.5 ? '0 1px 3px rgba(0,0,0,.8),0 0 6px rgba(0,0,0,.4)' : '0 1px 3px rgba(255,255,255,.8),0 0 6px rgba(255,255,255,.4)';
+}
+function contrastStrokeColor(hex) {
+  const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+  return (0.299 * r + 0.587 * g + 0.114 * b) / 255 > 0.5 ? '#000000' : '#ffffff';
 }
 
 // --- Dynamic UI Builders ---
@@ -707,6 +711,8 @@ function generatePrompt() {
   // Critical requirements
   lines.push('');
   lines.push('【重要条件】');
+  if (L !== 'text-only') lines.push('- 人物は添付された人物画像をそのまま使用すること。');
+  if (state.refEnabled) lines.push('- 参照画像は添付された参照画像をそのまま使用すること。');
   lines.push('- テキストは画像内に収め、見切れないようにする。');
   lines.push('- 人物とテキストが重ならないようにする。');
   lines.push('- テキストは背景に直接配置する。テキストの背後に白い四角・枠・背景ボックスを入れない。');
@@ -876,6 +882,10 @@ sub2GoldBtn.addEventListener('click', () => {
 // Stroke toggles
 titleStrokeBtn.addEventListener('click', () => {
   state.titleStroke = !state.titleStroke;
+  if (state.titleStroke) {
+    state.titleStrokeColor = contrastStrokeColor(state.titleColor);
+    titleStrokeColorPicker.value = state.titleStrokeColor;
+  }
   titleStrokeBtn.classList.toggle('active', state.titleStroke);
   titleStrokeBtn.classList.toggle('stroke-off', !state.titleStroke);
   titleStrokeBtn.textContent = state.titleStroke ? '袋文字ON' : '袋文字OFF';
@@ -895,6 +905,10 @@ titleStrokeWidthSlider.addEventListener('input', () => {
 });
 sub1StrokeBtn.addEventListener('click', () => {
   state.subtitle1Stroke = !state.subtitle1Stroke;
+  if (state.subtitle1Stroke) {
+    state.subtitle1StrokeColor = contrastStrokeColor(state.subtitle1Color);
+    sub1StrokeColorPicker.value = state.subtitle1StrokeColor;
+  }
   sub1StrokeBtn.classList.toggle('active', state.subtitle1Stroke);
   sub1StrokeBtn.classList.toggle('stroke-off', !state.subtitle1Stroke);
   sub1StrokeBtn.textContent = state.subtitle1Stroke ? '袋文字ON' : '袋文字OFF';
@@ -914,6 +928,10 @@ sub1StrokeWidthSlider.addEventListener('input', () => {
 });
 sub2StrokeBtn.addEventListener('click', () => {
   state.subtitle2Stroke = !state.subtitle2Stroke;
+  if (state.subtitle2Stroke) {
+    state.subtitle2StrokeColor = contrastStrokeColor(state.subtitle2Color);
+    sub2StrokeColorPicker.value = state.subtitle2StrokeColor;
+  }
   sub2StrokeBtn.classList.toggle('active', state.subtitle2Stroke);
   sub2StrokeBtn.classList.toggle('stroke-off', !state.subtitle2Stroke);
   sub2StrokeBtn.textContent = state.subtitle2Stroke ? '袋文字ON' : '袋文字OFF';
