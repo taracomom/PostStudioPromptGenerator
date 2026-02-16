@@ -1496,6 +1496,19 @@ textarea.input-clean {
   transform: translateX(3px);
 }
 
+/* Version label */
+.version-label {
+  position: fixed;
+  bottom: 6px;
+  left: 10px;
+  font-size: 10px;
+  color: var(--text-muted);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 100;
+  font-family: 'JetBrains Mono', monospace;
+}
+
 /* Header right group */
 .header-right {
   display: flex;
