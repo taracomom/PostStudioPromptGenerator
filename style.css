@@ -683,11 +683,10 @@ body {
 
 .preview-disclaimer {
   font-size: 9px;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   text-align: center;
   letter-spacing: 0.04em;
   font-family: 'JetBrains Mono', monospace;
-  opacity: 0.7;
 }
 
 .preview-container {
@@ -1102,7 +1101,7 @@ textarea.input-clean {
   background: transparent;
   border: 1px solid rgba(0,128,128,0.25);
   border-radius: 20px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 11px;
   text-decoration: none;
   transition: all var(--transition-fast);
@@ -1459,20 +1458,20 @@ textarea.input-clean {
 /* Toast */
 .toast {
   position: fixed;
-  bottom: 32px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(16px) scale(0.95);
+  transform: translate(-50%, -50%) scale(0.8);
   background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-dark) 100%);
   color: #ffffff;
-  padding: 12px 24px;
+  padding: 14px 28px;
   border-radius: 28px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  box-shadow: 0 12px 28px rgba(0, 128, 128, 0.4), 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 128, 128, 0.45), 0 4px 12px rgba(0, 0, 0, 0.15);
   opacity: 0;
   pointer-events: none;
-  transition: all var(--transition-spring);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: 2000;
   display: flex;
   align-items: center;
@@ -1484,7 +1483,7 @@ textarea.input-clean {
 .toast.show {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0) scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .toast:hover {

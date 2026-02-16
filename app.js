@@ -293,6 +293,29 @@ function showToast(msg, cta) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
 }
+function createConfetti() {
+  const colors = ['#008080', '#F5E6A3', '#D4AF37', '#ff6b6b', '#51cf66', '#339af0', '#fcc419', '#ff922b', '#e64980', '#7950f2'];
+  const container = document.createElement('div');
+  container.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:2001;overflow:hidden;';
+  document.body.appendChild(container);
+  for (let i = 0; i < 60; i++) {
+    const p = document.createElement('div');
+    const x = 50 + (Math.random() - 0.5) * 10;
+    const w = 5 + Math.random() * 7;
+    const h = w * (0.4 + Math.random() * 0.6);
+    const rot = Math.random() * 360;
+    const tx = (Math.random() - 0.5) * 400;
+    const ty = -100 - Math.random() * 200;
+    const dur = 700 + Math.random() * 600;
+    p.style.cssText = `position:absolute;top:50%;left:${x}%;width:${w}px;height:${h}px;background:${colors[i % colors.length]};border-radius:${Math.random() > 0.5 ? '50%' : '2px'};`;
+    container.appendChild(p);
+    p.animate([
+      { transform: 'translate(-50%,-50%) rotate(0deg)', opacity: 1 },
+      { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) rotate(${rot + 360}deg)`, opacity: 0 }
+    ], { duration: dur, easing: 'cubic-bezier(.15,.6,.35,1)', fill: 'forwards' });
+  }
+  setTimeout(() => container.remove(), 1500);
+}
 function setActive(container, sel, el) {
   container.querySelectorAll(sel).forEach(e => e.classList.remove('active'));
   el.classList.add('active');
@@ -855,7 +878,7 @@ titleStrokeBtn.addEventListener('click', () => {
   state.titleStroke = !state.titleStroke;
   titleStrokeBtn.classList.toggle('active', state.titleStroke);
   titleStrokeBtn.classList.toggle('stroke-off', !state.titleStroke);
-  titleStrokeBtn.textContent = state.titleStroke ? '縁あり' : '縁なし';
+  titleStrokeBtn.textContent = state.titleStroke ? '袋文字ON' : '袋文字OFF';
   titleStrokeColorPicker.classList.toggle('stroke-inactive', !state.titleStroke);
   const d = state.titleStroke ? '' : 'none';
   titleStrokeWidthSlider.style.display = d;
@@ -874,7 +897,7 @@ sub1StrokeBtn.addEventListener('click', () => {
   state.subtitle1Stroke = !state.subtitle1Stroke;
   sub1StrokeBtn.classList.toggle('active', state.subtitle1Stroke);
   sub1StrokeBtn.classList.toggle('stroke-off', !state.subtitle1Stroke);
-  sub1StrokeBtn.textContent = state.subtitle1Stroke ? '縁あり' : '縁なし';
+  sub1StrokeBtn.textContent = state.subtitle1Stroke ? '袋文字ON' : '袋文字OFF';
   sub1StrokeColorPicker.classList.toggle('stroke-inactive', !state.subtitle1Stroke);
   const d = state.subtitle1Stroke ? '' : 'none';
   sub1StrokeWidthSlider.style.display = d;
@@ -893,7 +916,7 @@ sub2StrokeBtn.addEventListener('click', () => {
   state.subtitle2Stroke = !state.subtitle2Stroke;
   sub2StrokeBtn.classList.toggle('active', state.subtitle2Stroke);
   sub2StrokeBtn.classList.toggle('stroke-off', !state.subtitle2Stroke);
-  sub2StrokeBtn.textContent = state.subtitle2Stroke ? '縁あり' : '縁なし';
+  sub2StrokeBtn.textContent = state.subtitle2Stroke ? '袋文字ON' : '袋文字OFF';
   sub2StrokeColorPicker.classList.toggle('stroke-inactive', !state.subtitle2Stroke);
   const d = state.subtitle2Stroke ? '' : 'none';
   sub2StrokeWidthSlider.style.display = d;
@@ -1054,10 +1077,12 @@ copyBtn.addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(promptOutput.value);
     showToast('コピーしました', ctaHtml);
+    createConfetti();
   } catch {
     promptOutput.select();
     document.execCommand('copy');
     showToast('コピーしました', ctaHtml);
+    createConfetti();
   }
 });
 
